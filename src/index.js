@@ -21,7 +21,7 @@ function greeting(user) {
             <h1>Hello, {user.name}! We hope you enjoy your stay!</h1>
             <h2 className='text-muted'>Your fortune favors you! Your lucky number is: {user.luckyNumber}</h2>
         </div>
-    )
+    );
     return container;
 }
 
