@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 function getRandNumBetween(min, max){
-    let num = Math.floor(Math.random()*(max-min+1) + min);
-    return num;
+    return Math.floor(Math.random()*(max-min+1) + min);
 }
 
 function luckyNumber(){
