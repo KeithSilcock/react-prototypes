@@ -12,6 +12,7 @@ class ContactForm extends Component{
                 phone:'',
                 email:'',
             },
+            hasEmptyField:false,
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -30,8 +31,22 @@ class ContactForm extends Component{
     handleSubmit(event){
         event.preventDefault();
         console.log(this.state.form);
-        this.props.addContact(this.state.form);
-        this.reset();
+
+        const {firstName, lastName, phone, email} = this.state.form;
+
+        if(firstName !== '' && lastName !== '' &&
+            phone !== '' && email !== ''){
+            this.setState({
+                hasEmptyField:false,
+            });
+            this.props.addContact(this.state.form);
+            this.reset();
+        }else{
+            this.setState({
+                hasEmptyField:true,
+            })
+            console.log('you have an empty input')
+        }
     }
     reset(){
         this.setState({
@@ -41,29 +56,31 @@ class ContactForm extends Component{
                 phone:'',
                 email:'',
             },
+            hasEmptyField:false,
         })
     }
 
     render(){
         const {firstName, lastName, phone, email} = this.state.form;
+        const {hasEmptyField} = this.state;
 
         return(
             <form onSubmit={this.handleSubmit}>
                 <Field name="firstName" label="First Name" type="text"
                        value={firstName} onChange={this.handleInputChange}
-                       onBlur={this.handleBlurInput}/>
+                       hasEmptyField={hasEmptyField}/>
 
                 <Field name="lastName" label="Last Name" type="text"
                        value={lastName} onChange={this.handleInputChange}
-                       onBlur={this.handleBlurInput}/>
+                       hasEmptyField={hasEmptyField}/>
 
                 <Field name="phone" label='Phone Number' type="text"
                        value={phone} onChange={this.handleInputChange}
-                       onBlur={this.handleBlurInput}/>
+                       hasEmptyField={hasEmptyField}/>
 
                 <Field name="email" label="Email" type="text"
                        value={email} onChange={this.handleInputChange}
-                       onBlur={this.handleBlurInput}/>
+                       hasEmptyField={hasEmptyField}/>
 
                 <button>Add Contact</button>
                 <button type='button' onClick={this.reset}>Clear Form</button>

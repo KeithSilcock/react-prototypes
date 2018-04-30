@@ -22,11 +22,17 @@ class Field extends Component{
         }
     }
     render(){
+        const {value} = this.props;
+        const {hasEmptyField, ...rest} = this.props;
+
         let {redFlag} = this.state;
+        if(hasEmptyField && value===''){
+            redFlag = 'bg-danger';
+        }
         return (
             <div className="form-group">
                 <label>{this.label}</label>
-                <input {...this.props} onBlur={this.handleBlurInput} className={`form-control ${redFlag}`}/>
+                <input {...rest} onBlur={this.handleBlurInput} className={`form-control ${redFlag}`}/>
             </div>
         )
     }
