@@ -1,21 +1,35 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default (props)=>{
-    let {errorState, ...rest} = props;
+class Field extends Component{
+    constructor(props) {
+        super(props);
 
-    let redFlag='';
-    if(rest.value === '' && errorState){
-        redFlag = 'bg-danger';
+        this.state= {
+            redFlag:''
+        };
+        this.handleBlurInput = this.handleBlurInput.bind(this);
     }
 
-    return(
-        <div className="form-group">
-            <label>{props.label}</label>
-            <input {...rest} className={`form-control ${redFlag}`}/>
-        </div>
-    )
+    handleBlurInput(event){
+        if(event.target.value === ''){
+            this.setState({
+                redFlag:'bg-danger',
+            })
+        }else{
+            this.setState({
+                redFlag:'',
+            })
+        }
+    }
+    render(){
+        let {redFlag} = this.state;
+        return (
+            <div className="form-group">
+                <label>{this.label}</label>
+                <input {...this.props} onBlur={this.handleBlurInput} className={`form-control ${redFlag}`}/>
+            </div>
+        )
+    }
 }
 
-//I went to Eureka fest and worked on react prototypes
-//I am currently working on more react prototypes
-//I have no blockers
+export default Field
