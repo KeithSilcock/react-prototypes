@@ -21,11 +21,11 @@ class ContactForm extends Component{
     }
     handleInputChange(event){
         const {value, name} = event.target;
-        const {form} = this.state;
+        // const {form} = this.state;
 
-        form[name] = value;
+        // form[name] = value;
         this.setState({
-            form:form,
+            [name]:value,
         })
     }
     handleSubmit(event){
