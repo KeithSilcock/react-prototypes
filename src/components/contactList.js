@@ -1,20 +1,15 @@
 import React, {Component} from 'react';
 import ContactCard from './contactCard';
 
-class ContactList extends Component{
-    render(){
-        console.log(this.props)
-        const list = this.props.contacts.map( (item, index) => {
-            return <ContactCard key={index} contact={item}/>
-        });
+export default (props) =>{
+    const list = props.contacts.map( (item, index) => {
+        return <ContactCard key={index} contact={item}/>
+    });
 
-        return(
+    return(
+        <div className="col-8">
+            <div className="row">{list}</div>
+        </div>
+    )
 
-            <div className="col-8">
-                <div className="row">{list}</div>
-            </div>
-        )
-    }
 }
-
-export default ContactList;
