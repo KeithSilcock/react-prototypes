@@ -9,7 +9,17 @@ class App extends Component {
 
         this.state={
             contacts:contactData,
-        }
+        };
+
+        this.addContact=this.addContact.bind(this)
+    }
+
+    addContact(contact){
+        // const newContactData = this.state.contacts;
+        // newContactData.push(contact);
+        this.setState({
+            contacts: [contact, ...this.state.contacts]
+        });
     }
 
     render() {
@@ -18,7 +28,7 @@ class App extends Component {
                 <h1 className="text-center">Address Book</h1>
                 <div className="row">
                     <div className="col-4">
-                        <ContactForm/>
+                        <ContactForm addContact={this.addContact}/>
                     </div>
                     <ContactList contacts={this.state.contacts}/>
                 </div>

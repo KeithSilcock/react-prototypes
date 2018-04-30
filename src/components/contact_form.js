@@ -32,6 +32,7 @@ class ContactForm extends Component{
     handleSubmit(event){
         event.preventDefault();
         console.log(this.state.form);
+        this.props.addContact(this.state.form)
     }
 
     render(){
