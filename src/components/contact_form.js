@@ -22,11 +22,12 @@ class ContactForm extends Component{
     handleInputChange(event){
         const {value, name} = event.target;
         // const {form} = this.state;
-
         // form[name] = value;
         this.setState({
-            [name]:value,
-        })
+            form: {
+                [name]: value,
+            },
+        });
     }
     handleSubmit(event){
         event.preventDefault();
@@ -44,7 +45,7 @@ class ContactForm extends Component{
         }else{
             this.setState({
                 hasEmptyField:true,
-            })
+            });
             console.log('you have an empty input')
         }
     }
