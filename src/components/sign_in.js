@@ -9,30 +9,38 @@ class SignIn extends React.Component{
             password:'',
         };
 
-        this.handleChange=this.handleChange.bind(this)
+        this.handleChange=this.handleChange.bind(this);
+        this.handleSubmit=this.handleSubmit.bind(this);
     }
     handleChange(event){
-        console.log(event.target.name)
-        console.log(event.target.value)
-
         const {name, value} = event.target;
 
         this.setState({
             [name]:value,
         })
     }
+    handleSubmit(event){
+        event.preventDefault();
+        console.log(this.state.email);
+        console.log(this.state.password);
 
+        this.setState({
+            email:'',
+            password:'',
+        })
+    }
 
     render(){
+        const {email, password} = this.state
         return(
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <div>
                     <label>Email</label>
-                    <input name='email' type="email" onChange={this.handleChange}/>
+                    <input value={email} name='email' type="text" onChange={this.handleChange}/>
                 </div>
                 <div>
                     <label>Password</label>
-                    <input name='password' type="password" onChange={this.handleChange}/>
+                    <input value={password} name='password' type="password" onChange={this.handleChange}/>
                 </div>
                 <button>Submit</button>
             </form>
