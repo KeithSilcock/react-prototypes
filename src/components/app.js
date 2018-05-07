@@ -1,6 +1,7 @@
 import React from 'react';
 import Welcome from './welcome';
 import Nav from './nav';
+import OurMacarons from './our_macarons';
 import {
     Route,
     Link
@@ -11,7 +12,8 @@ export default (props) => {
         <div className="container">
             <Nav/>
             <h1>hi</h1>
-            <Route path='/' component={Welcome}/>
+            <Route exact path='/' component={Welcome}/>
+            <Route path='/our-macarons' component={OurMacarons}/>
         </div>
 
     )

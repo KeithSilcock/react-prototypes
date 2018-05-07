@@ -5,7 +5,7 @@ export default (props) => {
 
         <div>
             <h1>Our Macarons</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut consequatur dolorum eveniet ipsam iste laudantium nisi nobis numquam omnis perspiciatis provident, quibusdam saepe tenetur veniam. Delectus dicta ut vel?</p>
+            <p>Macarons and stuff page and what not</p>
         </div>
 
     )
