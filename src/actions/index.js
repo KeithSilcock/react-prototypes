@@ -7,6 +7,6 @@ export function updateTime() {
 export function setTime() {
     return {
         type:'SET_TIME',
-        payload:'MY STRING'
+        payload:'Shhhhhh!'
     }
 }
